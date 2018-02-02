@@ -14,6 +14,8 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - zip -r JavaWeb.zip target/JavaWeb.war appspec.yml restart.sh
+      - aws s3 cp JavaWeb.zip s3://mmatouk-builds/
 artifacts:
   files:
     - target/JavaWeb.war
